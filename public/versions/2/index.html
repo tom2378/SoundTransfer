@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  
+  <script type="text/javascript" src="./quiet.js"></script>
+  <script type="module" src="2.js"></script>
+  <script type="module" src="versions/1/1.js"></script>
+  <script async type="text/javascript" src="./quiet-emscripten.js"></script>
+  <title>SoundTransfer</title>
+</head>
+
+<body>
+  <div class="container">
+    <!-- <div class="header"> -->
+    <h1>SoundTransfer</h1>
+    <p>Send messages and files over sound waves</p>
+    <!-- </div> -->
+
+
+    <div class="section">
+      <h2>TEXT</h2>
+      <div class="row">
+        <div>
+          <label>Emitting Section</label>
+          <div style="width: 100%;display: flex;">
+            <input type="text" id="textEmit" style="flex-grow: 1;margin-right: 4px;"></input>
+            <button id="textEmitBtn" style="height: 100%; margin-top: 0;">Emit</button>
+          </div>
+        </div>
+        <div>
+          <label>Receiving Section</label>
+          <div style="width: 100%;display: flex;">
+            <input type="text" id="textReceive" disabled style="flex-grow: 1;margin-right: 4px;"></input>
+            <button id="textListenBtn" style="height: 100%; margin-top: 0; margin-right: 4px;">Listen</button>
+            <button  id="textCalibrateBtn" style="height: 100%; margin-top: 0;">Calibrate</button>
+          </div>
+        </div>
+      </div>
+      <div >
+        <canvas id="waveform-text" width="800" height="200" aria-hidden="true"></canvas>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>IMAGE</h2>
+
+      <div>
+        <div class="row">
+          <div>
+            <label for="profileSelect">Profile</label>
+            <select id="profileSelect"></select>
+            <p id="profileHint" class="hint"></p>
+          </div>
+          <div>
+            <label for="vizSelect">Visualization</label>
+            <select id="vizSelect">
+              <option value="waveform">Waveform</option>
+              <option value="spectrogram">Spectrogram</option>
+            </select>
+          </div>
+          <button id="listen">Listen</button>
+        </div>
+        <div style="display: flex; justify-content: space-between; gap: 8px;">
+          <div id="vizWrapper" style="flex-grow: 1; margin-right: 4px;">
+            <canvas id="waveform" width="800" height="200" aria-hidden="true"></canvas>
+            <div class="progress-bar">
+              <div id="sendProgress" class="progress-fill"></div>
+            </div>
+            <div id="progressInfo" class="progress-info"></div>
+        </div>
+        <div class="section" style="flex-grow: 1;">
+          <h2>Send Image</h2>
+          <label for="fileInput">Choose an image</label>
+          <input id="fileInput" type="file" />
+          <div>
+            <label>
+              <input id="pixelDraw" type="checkbox" />
+              Show images pixel-by-pixel
+            </label>
+          </div>
+          <div id="fileInfo" class="hint"></div>
+          <button id="sendFile">Send Image</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Received</h2>
+      <div id="receivedList"></div>
+    </div>
+  </div>
+  </div>
+</body>
+
+</html>
